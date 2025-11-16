@@ -1,5 +1,5 @@
 {
-    "name": "nfephp-org/sped-da",
+    "name": "tiagoknow/sped-da",
     "type": "library",
     "description": "sped-da contêm as classes para criação dos documentos auxiliares referidos no projeto Sped.",
     "keywords": [
@@ -10,7 +10,7 @@
         "Dacte",
         "CCe"
     ],
-    "homepage": "https://github.com/nfephp-org/sped-da",
+    "homepage": "https://github.com/tiagoknow/sped-da",
     "license": [
         "LGPL-3.0-or-later+",
         "GPL-3.0-or-later",
@@ -18,9 +18,9 @@
     ],
     "authors": [
         {
-            "name": "Roberto L. Machado",
-            "email": "linux.rlm@gmail.com.br",
-            "homepage": "http://www.nfephp.org",
+            "name": "Tiago de Sá",
+            "email": "tiagoi386@gmail.com",
+            "homepage": "https://github.com/tiagoknow",
             "role": "Developer"
         },
         {

@@ -363,6 +363,11 @@ class Danfce extends DaCommon
         $this->bloco5H = $this->calculateHeightPag();
         $this->bloco9H = $this->calculateHeighBlokIX();
 
+        // Se não tem QR Code, reduz altura do bloco VIII
+        if (empty($this->qrCode)) {
+            $this->bloco8H = 10;
+        }
+
         $length = $this->bloco1H //cabeçalho
             + $this->bloco2H //informação fiscal
             + $this->bloco3H //itens

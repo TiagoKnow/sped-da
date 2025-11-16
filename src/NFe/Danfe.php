@@ -1096,9 +1096,12 @@ class Danfe extends DaCommon
             //endereço
             $y1     = $y1 + 5;
             $aFont  = ['font' => $this->fontePadrao, 'size' => 8, 'style' => ''];
-            $fone   = !empty($this->enderEmit->getElementsByTagName("fone")->item(0)->nodeValue)
-                ? $this->enderEmit->getElementsByTagName("fone")->item(0)->nodeValue
-                : '';
+            $fone = '';
+            if (isset($this->enderEmit) &&
+                $this->enderEmit->getElementsByTagName("fone")->item(0) &&
+                !empty($this->enderEmit->getElementsByTagName("fone")->item(0)->nodeValue)) {
+                $fone = $this->enderEmit->getElementsByTagName("fone")->item(0)->nodeValue;
+            }
             $lgr    = $this->getTagValue($this->enderEmit, "xLgr");
             $nro    = $this->getTagValue($this->enderEmit, "nro");
             $cpl    = $this->getTagValue($this->enderEmit, "xCpl", " - ");
@@ -3855,12 +3858,15 @@ class Danfe extends DaCommon
             $emitente     = $this->emit->getElementsByTagName("xNome")->item(0)->nodeValue . " ";
             $destinatario = '';
             $destinatario .= $this->dest->getElementsByTagName("xNome")->item(0)->nodeValue . " - ";
-            $destinatario .= $this->enderDest->getElementsByTagName("xLgr")->item(0)->nodeValue . ", ";
-            $destinatario .= $this->enderDest->getElementsByTagName("nro")->item(0)->nodeValue . " ";
-            $destinatario .= $this->getTagValue($this->enderDest, "xCpl", " - ", " ");
-            $destinatario .= $this->enderDest->getElementsByTagName("xBairro")->item(0)->nodeValue . " ";
-            $destinatario .= $this->enderDest->getElementsByTagName("xMun")->item(0)->nodeValue . "-";
-            $destinatario .= $this->enderDest->getElementsByTagName("UF")->item(0)->nodeValue . " ";
+
+            if (isset($this->enderDest)) {
+                $destinatario .= $this->enderDest->getElementsByTagName("xLgr")->item(0)->nodeValue . ", ";
+                $destinatario .= $this->enderDest->getElementsByTagName("nro")->item(0)->nodeValue . " ";
+                $destinatario .= $this->getTagValue($this->enderDest, "xCpl", " - ", " ");
+                $destinatario .= $this->enderDest->getElementsByTagName("xBairro")->item(0)->nodeValue . " ";
+                $destinatario .= $this->enderDest->getElementsByTagName("xMun")->item(0)->nodeValue . "-";
+                $destinatario .= $this->enderDest->getElementsByTagName("UF")->item(0)->nodeValue . " ";
+            }
         }
         //identificação do sistema emissor
         //linha separadora do canhoto
